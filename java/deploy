@@ -4,5 +4,6 @@ SOURCE_DIR=/var/lib/tsuru
 source ${SOURCE_DIR}/base/deploy
 if [ -f ${CURRENT_DIR}/context.xml  ]; then
 	cp -f ${CURRENT_DIR}/context.xml /etc/tomcat7/context.xml
+	wget https://repo.maven.apache.org/maven2/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34.jar -O /usr/share/tomcat7/lib/mysql-connector-java-5.1.34.jar
 fi
 ${VENV_DIR}/bin/python ${SOURCE_DIR}/hooks.py
