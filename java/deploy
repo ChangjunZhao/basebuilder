@@ -2,4 +2,7 @@
 
 SOURCE_DIR=/var/lib/tsuru
 source ${SOURCE_DIR}/base/deploy
+if [ -f ${CURRENT_DIR}/context.xml  ]; then
+	cp -f ${CURRENT_DIR}/context.xml /etc/tomcat7/context.xml
+fi
 ${VENV_DIR}/bin/python ${SOURCE_DIR}/hooks.py
