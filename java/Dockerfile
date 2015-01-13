@@ -5,7 +5,7 @@
 
 from	ubuntu:14.04
 
-RUN     wget -O /etc/apt/source.list http://file.cloud.tsuru.cn/aliyun.list
+RUN     curl -SL http://file.cloud.tsuru.cn/aliyun.list > /etc/apt/source.list
 run	apt-get update
 run	apt-get install wget -y --force-yes
 run	wget http://github.com/ChangjunZhao/basebuilder/tarball/java_datasource_support -O basebuilder.tar.gz --no-check-certificate
