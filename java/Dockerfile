@@ -8,6 +8,7 @@ from	ubuntu:14.04
 run	apt-get update
 run	apt-get install wget curl -y --force-yes
 RUN     curl -SL http://file.cloud.tsuru.cn/aliyun.list > /etc/apt/source.list
+RUN     ap-get update
 run	wget http://github.com/ChangjunZhao/basebuilder/tarball/java_datasource_support -O basebuilder.tar.gz --no-check-certificate
 run	mkdir /var/lib/tsuru
 run	tar -xvf basebuilder.tar.gz -C /var/lib/tsuru --strip 1
