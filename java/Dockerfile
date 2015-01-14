@@ -8,7 +8,7 @@ from	ubuntu:14.04
 ADD     https://github.com/ChangjunZhao/basebuilder/raw/development/utils/aliyuncs.sources.list /etc/apt/sources.list
 run	apt-get update
 run	apt-get install wget -y --force-yes
-run	wget http://github.com/ChangjunZhao/basebuilder/tarball/java_datasource_support -O basebuilder.tar.gz --no-check-certificate
+run	wget http://github.com/ChangjunZhao/basebuilder/tarball/development -O basebuilder.tar.gz --no-check-certificate
 run	mkdir /var/lib/tsuru
 run	tar -xvf basebuilder.tar.gz -C /var/lib/tsuru --strip 1
 run	cp /var/lib/tsuru/java/deploy /var/lib/tsuru
