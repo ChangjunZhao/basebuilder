@@ -1,7 +1,7 @@
 #!/bin/bash -el
 
 SOURCE_DIR=/var/lib/tsuru
-chown -R ubuntu:ubuntu ${CURRENT_DIR}
+chown -R ubuntu:ubuntu /home/application/current
 source ${SOURCE_DIR}/base/deploy
 if [ -f ${CURRENT_DIR}/context.xml  ]; then
 	cp -f ${CURRENT_DIR}/context.xml /etc/tomcat7/context.xml
