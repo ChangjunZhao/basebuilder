@@ -33,6 +33,8 @@ function archive_deploy() {
 	fi
 	mkdir -p $CURRENT_DIR
 	chown -R ubuntu:ubuntu $CURRENT_DIR
+	mkdir /ResourceOneHome
+	chown -R ubuntu:ubuntu /ResourceOneHome
 	curl -sSfNL $1 -o /tmp/archive.tar.gz
 	tar -C $CURRENT_DIR -xzf /tmp/archive.tar.gz
 	rm /tmp/archive.tar.gz
