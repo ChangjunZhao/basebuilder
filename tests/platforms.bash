@@ -80,6 +80,7 @@ function clean_tsuru_now() {
 export DEBIAN_FRONTEND=noninteractive
 sudo -E apt-get update
 sudo -E apt-get install curl -qqy
+sudo -E apt-get update
 sudo -E apt-get install linux-image-extra-$(uname -r) -qqy
 curl -sL https://raw.githubusercontent.com/tsuru/now/master/run.bash -o /tmp/tsuru-now.bash
 bash /tmp/tsuru-now.bash "$@" --without-dashboard
@@ -95,7 +96,7 @@ set -e
 clone_basebuilder /tmp/basebuilder
 echo -e "Host localhost\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
-platforms="java nodejs php python python3 ruby ruby20 ruby21 static buildpack cordova lua"
+platforms="java nodejs php python python3 ruby ruby20 ruby21 static cordova"
 
 for platform in $platforms
 do
