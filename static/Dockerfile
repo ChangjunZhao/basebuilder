@@ -3,6 +3,7 @@
 # 1 - tsuru-admin platform-add static -d https://raw.github.com/tsuru/basebuilder/master/static/Dockerfile
 
 from	ubuntu:14.04
+ADD     https://github.com/ChangjunZhao/basebuilder/raw/development/utils/aliyuncs.sources.list /etc/apt/sources.list
 run	apt-get update
 run	apt-get install wget -y --force-yes
 run	wget http://github.com/tsuru/basebuilder/tarball/master -O basebuilder.tar.gz --no-check-certificate
