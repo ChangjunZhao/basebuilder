@@ -1,3 +1,7 @@
+# Copyright 2015 basebuilder authors. All rights reserved.
+# Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
+
 import os
 import yaml
 import sys
@@ -36,7 +40,7 @@ class Manager(object):
             packages += self.interpretor.get_packages()
 
         print('Installing system packages...')
-        if os.system("apt-get install -y %s" % (' '.join(packages))) != 0:
+        if os.system("apt-get install -y --force-yes %s" % (' '.join(packages))) != 0:
             raise InstallationException('An error appeared while installing needed packages')
 
         # Calling post-install hooks

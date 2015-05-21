@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+
+# Copyright 2015 basebuilder authors. All rights reserved.
+# Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
+
 import os
 import shutil
 import subprocess
@@ -74,14 +79,16 @@ class FPM54(Interpretor):
 
     def pre_install(self):
         os.system('apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2098A6E')
-        os.system('echo deb http://php53.dotdeb.org stable all | tee /etc/apt/sources.list.d/php54.list')
+        os.system('echo deb http://packages.dotdeb.org stable all | tee /etc/apt/sources.list.d/php54.list')
         os.system('apt-get update')
         self.phpversion = subprocess.check_output('apt-cache madison php5|grep 5.4|awk \'{print "="$3}\'', shell=True)
 
     def get_packages(self):
         packages = ['php5-common'.join(['', self.phpversion]), 'php5-fpm'.join(['', self.phpversion])]
-        for extension in self.configuration.extensions:
-            packages.append(extension.join(['', self.phpversion]))
+        if 'extensions' in self.configuration:
+            for extension in self.configuration.get('extensions'):
+                packages.append(extension.join(['', self.phpversion]))
+
         return packages
 
     def post_install(self):
@@ -92,8 +99,16 @@ class FPM55(Interpretor):
     def __init__(self, configuration, application):
         super(FPM55, self).__init__(configuration, application)
 
+    def pre_install(self):
+        os.system('apt-get update')
+
     def get_packages(self):
-        return ['php5-fpm']
+        packages = ['php5-fpm']
+        if 'extensions' in self.configuration:
+            for extension in self.configuration.get('extensions'):
+                packages.append(extension.join(['', self.phpversion]))
+
+        return packages
 
     def post_install(self):
         # Remove autostart
