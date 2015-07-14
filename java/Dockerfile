@@ -17,6 +17,7 @@ run	apt-get install wget -y --force-yes
 run	wget http://github.com/ChangjunZhao/basebuilder/tarball/development -O basebuilder.tar.gz --no-check-certificate
 run	mkdir /var/lib/tsuru
 run	tar -xvf basebuilder.tar.gz -C /var/lib/tsuru --strip 1
+run	rm basebuilder.tar.gz
 run	cp /var/lib/tsuru/java/deploy /var/lib/tsuru
 run	cp /var/lib/tsuru/java/start /var/lib/tsuru
 run	/var/lib/tsuru/java/install
